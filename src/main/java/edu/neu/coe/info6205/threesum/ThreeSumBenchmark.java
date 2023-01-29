@@ -1,6 +1,7 @@
 package edu.neu.coe.info6205.threesum;
 
 import edu.neu.coe.info6205.util.Benchmark_Timer;
+import edu.neu.coe.info6205.util.Stopwatch;
 import edu.neu.coe.info6205.util.TimeLogger;
 import edu.neu.coe.info6205.util.Utilities;
 
@@ -17,25 +18,39 @@ public class ThreeSumBenchmark {
 
     public void runBenchmarks() {
         System.out.println("ThreeSumBenchmark: N=" + n);
-        benchmarkThreeSum("ThreeSumQuadratic", (xs) -> new ThreeSumQuadratic(xs).getTriples(), n, timeLoggersQuadratic);
-        benchmarkThreeSum("ThreeSumQuadrithmic", (xs) -> new ThreeSumQuadrithmic(xs).getTriples(), n, timeLoggersQuadrithmic);
+//        benchmarkThreeSum("ThreeSumQuadratic", (xs) -> new ThreeSumQuadratic(xs).getTriples(), n, timeLoggersQuadratic);
+//        benchmarkThreeSum("ThreeSumQuadrithmic", (xs) -> new ThreeSumQuadrithmic(xs).getTriples(), n, timeLoggersQuadrithmic);
         benchmarkThreeSum("ThreeSumCubic", (xs) -> new ThreeSumCubic(xs).getTriples(), n, timeLoggersCubic);
+
     }
 
     public static void main(String[] args) {
+
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.lap();
         new ThreeSumBenchmark(100, 250, 250).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(50, 500, 500).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(20, 1000, 1000).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(10, 2000, 2000).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(5, 4000, 4000).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(3, 8000, 8000).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
         new ThreeSumBenchmark(2, 16000, 16000).runBenchmarks();
+        System.out.println("Running time is: " + stopwatch.lap());
+        stopwatch.close();
     }
 
     private void benchmarkThreeSum(final String description, final Consumer<int[]> function, int n, final TimeLogger[] timeLoggers) {
         if (description.equals("ThreeSumCubic") && n > 4000) return;
-        // FIXME
-        // END 
+//        function.accept(supplier.get());
+        for (int i = 0; i < runs; i++) {
+            function.accept(supplier.get());
+        }
     }
 
     private final static TimeLogger[] timeLoggersCubic = {

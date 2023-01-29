@@ -82,5 +82,5 @@ public class RandomWalk {
         double meanDistance = randomWalkMulti(m, n);
         System.out.println(m + " steps: " + meanDistance + " over " + n + " experiments");
     }
-
+    
 }
