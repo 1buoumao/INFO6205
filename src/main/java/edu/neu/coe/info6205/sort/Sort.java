@@ -14,6 +14,7 @@ public interface Sort<X> extends GenericSort<X> {
      * @param makeCopy if set to true, we make a copy first and sort that.
      */
     default X[] sort(X[] xs, boolean makeCopy) {
+
         init(xs.length);
         X[] result = makeCopy ? Arrays.copyOf(xs, xs.length) : xs;
         sort(result, 0, result.length);
