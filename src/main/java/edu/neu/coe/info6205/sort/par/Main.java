@@ -79,6 +79,7 @@ public class Main {
             // TODO sort this out
             if (x.equalsIgnoreCase("-P")){
                 //noinspection ResultOfMethodCallIgnored
+//                ForkJoinPool myPool = new ForkJoinPool(Integer.parseInt(y));
                 System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", y);
             }
     }
