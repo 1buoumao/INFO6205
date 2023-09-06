@@ -1,1 +1,1 @@
-# This is branch of INFO6205 "Program structure" course.
+# This is the branch for INFO6205 "Program structure" course.
